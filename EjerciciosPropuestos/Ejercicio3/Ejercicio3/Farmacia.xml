@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Farmacia>
+	<Producto>
+		<Nombre>Paracetamol</Nombre>
+		<Cantidad>4</Cantidad>
+		<Precio>2.5</Precio>
+	</Producto>
+	<Producto>
+		<Nombre>Ibuprofeno</Nombre>
+		<Cantidad>5</Cantidad>
+		<Precio>4.5</Precio>
+	</Producto>
+	<Producto>
+		<Nombre>Ranitilina</Nombre>
+		<Cantidad>10</Cantidad>
+		<Precio>3</Precio>
+	</Producto>
+	<Producto>
+		<Nombre>Jarabe</Nombre>
+		<Cantidad>15</Cantidad>
+		<Precio>2.5</Precio>
+	</Producto>
+	<Venta>
+		<Numero>1</Numero>
+		<Nombre>Jarabe</Nombre>
+		<Total>30</Total>
+	</Venta>
+	<Venta>
+		<Numero>2</Numero>
+		<Nombre>Paracetamol</Nombre>
+		<Total>8</Total>
+	</Venta>
+</Farmacia>

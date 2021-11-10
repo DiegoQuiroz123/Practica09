@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FarmaciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_producto" />
+    </Key>
+    <Property Name="ID_producto" Type="Int32" Nullable="false" />
+    <Property Name="ID_venta" Type="Int32" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Double" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="VENTAS" Relationship="Self.FK__PRODUCTO__ID_ven__3C69FB99" FromRole="PRODUCTO" ToRole="VENTAS" />
+  </EntityType>
+  <EntityType Name="VENTAS">
+    <Key>
+      <PropertyRef Name="ID_venta" />
+    </Key>
+    <Property Name="ID_venta" Type="Int32" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="total" Type="Double" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK__PRODUCTO__ID_ven__3C69FB99" FromRole="VENTAS" ToRole="PRODUCTO" />
+  </EntityType>
+  <Association Name="FK__PRODUCTO__ID_ven__3C69FB99">
+    <End Role="VENTAS" Type="Self.VENTAS" Multiplicity="0..1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VENTAS">
+        <PropertyRef Name="ID_venta" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="ID_venta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FarmaciaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="VENTAS" EntityType="Self.VENTAS" />
+    <AssociationSet Name="FK__PRODUCTO__ID_ven__3C69FB99" Association="Self.FK__PRODUCTO__ID_ven__3C69FB99">
+      <End Role="VENTAS" EntitySet="VENTAS" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
